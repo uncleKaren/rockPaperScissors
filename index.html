@@ -25,16 +25,33 @@
             if (playerSelection === computerSelection) {
                 return 'You both chose ' + playerSelection;
             } else if (playerSelection === 'ROCK' && computerSelection === 'SCISSORS' || playerSelection === 'PAPER' && computerSelection === 'ROCK' || playerSelection === 'SCISSORS' && computerSelection === 'PAPER') {
+                playerScore++;
                 return `You win! ${playerSelection} beats ${computerSelection}`;
             } else {
+                computerScore++;
                 return `You lose! ${computerSelection} beats ${playerSelection}`;
             }
         }
 
-        const playerSelection = 'rock'
-        const computerSelection = getComputerChoice();
+        function game() {
+            let rounds = 5;
 
-        console.log(roPaSciRound(playerSelection.toUpperCase(), computerSelection.toUpperCase()));
+            for (let i = 0; i < rounds; i++) {
+                let playerSelection = prompt('Rock, paper, scissors?');
+                console.log(roPaSciRound(playerSelection.toUpperCase(), getComputerChoice().toUpperCase()));
+                console.log(`The score is: Player: ${playerScore} - Computer: ${computerScore}`);
+            }
+        }
+
+        let playerScore = 0;
+        let computerScore = 0;
+
+        game()
+
+        //const playerSelection = 'rock';
+        //const computerSelection = getComputerChoice();
+
+        //console.log(roPaSciRound(playerSelection.toUpperCase(), computerSelection.toUpperCase()));
 
     </script>
 </body>
