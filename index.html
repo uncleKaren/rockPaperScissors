@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rocx</title>
+</head>
+
+<body>
+    <script>
+        function getComputerChoice() {
+            randomNum = Math.floor(Math.random() * 3);
+            if (randomNum === 0) {
+                return 'Rock';
+            } else if (randomNum === 1) {
+                return 'Paper'
+            } else if (randomNum === 2) {
+                return 'Scissors'
+            }
+        }
+
+        function roPaSciRound(playerSelection, computerSelection) {
+            if (playerSelection === computerSelection) {
+                return 'You both chose ' + playerSelection;
+            } else if (playerSelection === 'ROCK' && computerSelection === 'SCISSORS' || playerSelection === 'PAPER' && computerSelection === 'ROCK' || playerSelection === 'SCISSORS' && computerSelection === 'PAPER') {
+                return `You win! ${playerSelection} beats ${computerSelection}`;
+            } else {
+                return `You lose! ${computerSelection} beats ${playerSelection}`;
+            }
+        }
+
+        const playerSelection = 'rock'
+        const computerSelection = getComputerChoice();
+
+        console.log(roPaSciRound(playerSelection.toUpperCase(), computerSelection.toUpperCase()));
+
+    </script>
+</body>
+
+</html>
