@@ -5,10 +5,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css" />
     <title>rocx</title>
 </head>
 
 <body>
+    <div class="container">
+        <button id="rock"></button>
+        <button id="paper"></button>
+        <button id="scissors"></button>
+    </div>
+
+    <div class="score">
+        <span></span>
+    </div>
+
     <script>
         function getComputerChoice() {
             randomNum = Math.floor(Math.random() * 3);
@@ -33,25 +44,10 @@
             }
         }
 
-        function game() {
-            let rounds = 5;
-
-            for (let i = 0; i < rounds; i++) {
-                let playerSelection = prompt('Rock, paper, scissors?');
-                console.log(roPaSciRound(playerSelection.toUpperCase(), getComputerChoice().toUpperCase()));
-                console.log(`The score is: Player: ${playerScore} - Computer: ${computerScore}`);
-            }
-        }
+        
 
         let playerScore = 0;
         let computerScore = 0;
-
-        game()
-
-        //const playerSelection = 'rock';
-        //const computerSelection = getComputerChoice();
-
-        //console.log(roPaSciRound(playerSelection.toUpperCase(), computerSelection.toUpperCase()));
 
     </script>
 </body>
