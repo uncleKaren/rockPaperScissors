@@ -11,13 +11,14 @@
 
 <body>
     <div class="container">
-        <button id="rock"></button>
-        <button id="paper"></button>
-        <button id="scissors"></button>
+        <button id="rock" onclick="playerSelection(this.id)">Rock</button>
+        <button id="paper" onclick="playerSelection(this.id)">Paper</button>
+        <button id="scissors" onclick="playerSelection(this.id)">Scissors</button>
     </div>
 
     <div class="score">
-        <span></span>
+        <span id="message">yeet</span>
+        <span id="scoreCount">meme</span>
     </div>
 
     <script>
@@ -30,21 +31,36 @@
             } else if (randomNum === 2) {
                 return 'Scissors'
             }
-        }
+        };
 
-        function roPaSciRound(playerSelection, computerSelection) {
+        function playRound(playerSelection, computerSelection) {
             if (playerSelection === computerSelection) {
-                return 'You both chose ' + playerSelection;
+                document.querySelector('#message').innerHTML = 'You both chose ' + playerSelection;
             } else if (playerSelection === 'ROCK' && computerSelection === 'SCISSORS' || playerSelection === 'PAPER' && computerSelection === 'ROCK' || playerSelection === 'SCISSORS' && computerSelection === 'PAPER') {
                 playerScore++;
-                return `You win! ${playerSelection} beats ${computerSelection}`;
+                document.querySelector('#message').innerHTML = `You win! ${playerSelection} beats ${computerSelection}`;
             } else {
                 computerScore++;
-                return `You lose! ${computerSelection} beats ${playerSelection}`;
+                document.querySelector('#message').innerHTML = `You lose! ${computerSelection} beats ${playerSelection}`;
             }
-        }
+            
+            if (playerScore != 5 && computerScore !=5){
+                document.querySelector('#scoreCount').innerHTML = `you ${playerScore} - ${computerScore} computer`
+            } else if (computerScore == 5 ){
+                document.querySelector('#scoreCount').innerHTML = `you lose!`;
+                playerScore = 0;
+                computerScore = 0;
+            } else if (playerScore == 5){
+                document.querySelector('#scoreCount').innerHTML = `you win!`;
+                playerScore = 0;
+                computerScore = 0;
+            }
+        };
 
-        
+        function playerSelection(clicked_id){
+            clicked_button = document.getElementById(clicked_id);
+            playRound(clicked_id.toUpperCase(), getComputerChoice().toUpperCase());
+        };
 
         let playerScore = 0;
         let computerScore = 0;
